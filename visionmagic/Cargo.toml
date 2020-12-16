@@ -1,0 +1,18 @@
+[package]
+name = "visionmagic"
+version = "0.1.0"
+authors = ["Chris Tsang <tyt2y7@gmail.com>"]
+edition = "2018"
+description = "Collection of vision & graphics algorithms"
+license = "MIT OR Apache-2.0"
+homepage = "http://www.visioncortex.org/"
+repository = "https://github.com/visioncortex/visionmagic/"
+categories = ["graphics", "computer-vision"]
+keywords = ["computer-graphics", "computer-vision"]
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+log = "0.4"
+visioncortex = "0.4.0"
