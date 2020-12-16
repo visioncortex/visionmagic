@@ -24,6 +24,11 @@
   <img src="docs/images/Simplification Screenshot.png">
 </a>
 
+.
+
+<img src="docs/images/simplification-stages.png">
+Different levels of simplification
+
 ## Segmentation
 
 <img src="docs/images/Segmentation Screenshot.png">
