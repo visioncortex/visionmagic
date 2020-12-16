@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vision Magic</title>
+        <link rel="apple-touch-icon" sizes="192x192" href="./assets/apple-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="./assets/apple-icon.png">
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="./uikit/css/uikit.min.css" />
+        <link rel="stylesheet" href="./assets/style.css" />
+
+        <!-- UIkit JS -->
+        <script src="./uikit/js/uikit.min.js"></script>
+        <script src="./uikit/js/uikit-icons.min.js"></script>
+        <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "403biw7tra");
+        </script>
+    </head>
+
+    <body id="segmentation" class="uk-dark">
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+        <div class="container uk-padding" uk-grid>
+            <div class="uk-width-1-1 uk-navbar-container uk-navbar-transparent" uk-navbar>
+                <div class="uk-navbar-left uk-text-large uk-text-bolder">
+                    <a id="vc-logo" class="uk-logo" href="//www.visioncortex.org"><img style="height: 50px; margin: -30px 0 -25px 0;" src="./assets/visioncortex-logo.svg"></a>
+                    <a id="vc-logo-light" class="uk-logo" href="//www.visioncortex.org"><img style="height: 50px; margin: -30px 0 -25px 0;" src="./assets/visioncortex-logo-light.svg"></a>
+                    / Vision Magic
+                </div>
+                &nbsp;&nbsp;
+                <div class="uk-navbar-left uk-text-large">
+                    / Impression
+                </div>
+                <div class="uk-navbar-right uk-padding-small">
+                    <a class="uk-button uk-button-default" href="//github.com/visioncortex/visionmagic">GitHub</a>
+                    &nbsp;&nbsp;
+                    <a id="export" class="uk-button uk-button-primary">Download as PNG</a>
+                </div>
+            </div>
+            <div class="uk-width-3-4">
+                <div id="drop" class="uk-padding uk-flex uk-flex-center">
+                    <div id="canvas-container" class="uk-width-1-1">
+                        <div id="droptext" class="uk-flex uk-flex-middle uk-flex-center">
+                            <p>Drag an image here, Cmd-V to paste or <a href="#" id="imageSelect">Select file</a></p>
+                        </div>
+                        <canvas id="frame"></canvas>
+                        <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
+                    </div>
+                </div>
+                <div id="gallery" class="uk-padding">
+                    <div class="uk-inline" uk-slider>
+                        <ul id="galleryslider" class="uk-slider-items uk-child-width-1-5 uk-grid uk-grid-small">
+                            
+                        </ul>
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                    </div>
+                    <a class="uk-align-right uk-text-meta" style="margin:-5px;" uk-toggle="target: #credits-modal">Photo Credits</a>
+                </div>
+            </div>
+            <div id="options" class="uk-width-1-4 uk-height-1-1 uk-grid-small uk-flex uk-flex-center" uk-grid>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    &nbsp;
+                </div>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div class="uk-button-group">
+                        <a href="/simplification.html" class="uk-button uk-button-default">Simplification</a>
+                        <a href="#" id="clustering-color" class="selected uk-button uk-button-default">Segmentation</a>
+                    </div>
+                </div>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div uk-tooltip="pos: left; title: Allowed color difference between shapes in same aggregate">
+                        Deviation
+                    </div>
+                </div>
+                <div id="deviation_value" class="uk-width-1-6">
+                    0.0
+                </div>
+                <div class="uk-width-5-6">
+                    <input id="deviation" class="uk-range" type="range" min="0.0" max="2.0" step="any" value="0.0">
+                </div>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div uk-tooltip="pos: left; title: Minimum patch size (side of a square)">
+                        Min Size
+                    </div>
+                </div>
+                <div id="min_size_value" class="uk-width-1-6">
+                    0
+                </div>
+                <div class="uk-width-5-6">
+                    <input id="min_size" class="uk-range" type="range" min="0" max="256" step="1" value="0">
+                </div>
+
+                <p></p>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div id="progressregion" class="uk-width-1-1" style="display: none;">
+                        <progress id="progressbar" class="uk-progress" value="0" max="100" style="width: 98%;"></progress>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="credits-modal" uk-modal>
+            <div id="credits-modal-content" class="uk-modal-dialog uk-modal-body">
+                <p>Image Credits</p>
+            </div>
+        </div>
+
+        <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.remove('uk-dark');
+            document.body.classList.add('uk-light');
+        }
+        </script>
+        <script src="./bootstrap.js"></script>
+    </body>
+</html>
