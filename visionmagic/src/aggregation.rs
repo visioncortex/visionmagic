@@ -1,4 +1,3 @@
-
 use std::collections::HashSet;
 use visioncortex::{Color, ColorImage};
 use visioncortex::color_clusters::Clusters;
