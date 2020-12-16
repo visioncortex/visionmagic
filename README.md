@@ -18,5 +18,12 @@
   <sub>Built with 🦀 by <a href="//www.visioncortex.org/">The Vision Cortex Research Group</a></sub>
 </div>
 
-## Introduction
+## Simplification
 
+<a href="https://vimeo.com/491698600">
+  <img src="docs/images/Simplification Screenshot.png">
+</a>
+
+## Segmentation
+
+<img src="docs/images/Segmentation Screenshot.png">
