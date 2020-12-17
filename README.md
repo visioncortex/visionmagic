@@ -1,7 +1,7 @@
 <div align="center">
 
   <img src="docs/images/visioncortex-banner.png">
-  <h1>VisionMagic</h1>
+  <h1>Vision Magic</h1>
 
   <p>
     <strong>Collection of vision & graphics algorithms</strong>
@@ -31,6 +31,7 @@ Impression is a family of algorithms for image simplification, segmentation and 
 .
 
 <img src="docs/images/simplification-stages.png">
+
 Different levels of simplification
 
 ## Segmentation
@@ -40,4 +41,5 @@ Different levels of simplification
 ## Vectorization
 
 <img src="docs/images/Vectorization Screenshot.png">
+
 Vectorization is available as a standalone utility [VTracer](//github.com/visioncortex/vtracer).
