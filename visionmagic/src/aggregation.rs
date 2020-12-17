@@ -94,9 +94,11 @@ impl ProcessorTrait for Processor {
                 }).collect();
                 votes.sort_by_key(|v| v.1);
                 let diff = votes[0].1 as f64 / 10000.0;
-                if  (diff < self.params.deviation && myself.area() < self.params.min_size as usize) ||
+                if  (myself.area() < self.params.min_size as usize / 16) ||
+                    (diff < self.params.deviation && myself.area() < self.params.min_size as usize) ||
                     (diff < self.params.deviation * 2.0 && myself.area() < self.params.min_size as usize / 4) ||
-                    (diff < self.params.deviation / 2.0 && myself.area() < self.params.min_size as usize * 2) {
+                    (diff < self.params.deviation / 2.0 && myself.area() < self.params.min_size as usize * 4) || 
+                    (diff < self.params.deviation / 4.0) {
                     self.merge_into(myselfi, votes[0].0);
                 }
             }
