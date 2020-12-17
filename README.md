@@ -18,6 +18,10 @@
   <sub>Built with 🦀 by <a href="//www.visioncortex.org/">The Vision Cortex Research Group</a></sub>
 </div>
 
+# Impression
+
+Impression is a family of algorithms for image simplification, segmentation and vectorization.
+
 ## Simplification
 
 <a href="https://vimeo.com/491698600">
@@ -32,3 +36,8 @@ Different levels of simplification
 ## Segmentation
 
 <img src="docs/images/Segmentation Screenshot.png">
+
+## Vectorization
+
+<img src="docs/images/Vectorization Screenshot.png">
+Vectorization is available as a standalone utility [VTracer](//github.com/visioncortex/vtracer).
