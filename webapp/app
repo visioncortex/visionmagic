@@ -18,26 +18,24 @@ watermark.dark.src = 'assets/visioncortex-logo-watermark-dark.png';
 canvas.style.display = 'none';
 svg.style.display = 'none';
 
-if (document.getElementById('paste')) {
-    document.addEventListener('paste', function (e) {
-        if (e.clipboardData) {
-            let items = e.clipboardData.items;
-            if (!items) return;
+document.addEventListener('paste', function (e) {
+    if (e.clipboardData) {
+        let items = e.clipboardData.items;
+        if (!items) return;
 
-            //access data directly
-            for (let i = 0; i < items.length; i++) {
-                if (items[i].type.indexOf("image") !== -1) {
-                    //image
-                    let blob = items[i].getAsFile();
-                    let URLObj = window.URL || window.webkitURL;
-                    let source = URLObj.createObjectURL(blob);
-                    setSourceAndRestart(source);
-                }
+        //access data directly
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf("image") !== -1) {
+                //image
+                let blob = items[i].getAsFile();
+                let URLObj = window.URL || window.webkitURL;
+                let source = URLObj.createObjectURL(blob);
+                setSourceAndRestart(source);
             }
-            e.preventDefault();
         }
-    });
-}
+        e.preventDefault();
+    }
+});
 
 if (document.getElementById('export')) {
     document.getElementById('export').addEventListener('click', function (e) {
