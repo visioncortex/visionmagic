@@ -1,3 +1,4 @@
+//! Processor to simplify an image by pruning the image tree
 use visioncortex::{Color, CompoundPath, PathSimplifyMode};
 use visioncortex::color_clusters::{Cluster, Clusters, ClustersView};
 use crate::pipeline::Processor as ProcessorTrait;
@@ -11,8 +12,10 @@ pub struct Processor {
     stop: usize,
 }
 
+/// [`Clusters`]
 pub type Input = Clusters;
 
+/// [`CompoundPath`] with [`Color`]
 pub type Output = Vec<OutputUnit>;
 
 pub struct OutputUnit {
@@ -21,7 +24,9 @@ pub struct OutputUnit {
 }
 
 pub struct Params {
+    /// Valid range is 0~65535. Ratio of how many nodes we retain from the image tree
     pub fidelity: u32,
+    /// Valid range is 0~65535. Ratio of how many points we use to outline each shape 
     pub shape_details: u32,
 }
 

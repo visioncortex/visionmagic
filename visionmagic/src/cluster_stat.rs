@@ -1,3 +1,4 @@
+//! Processor to calculate color statistic on set of clusters
 use visioncortex::{ColorStat, ColorStatBuilder};
 use visioncortex::color_clusters::Clusters;
 use crate::pipeline::Processor as ProcessorTrait;
@@ -10,8 +11,10 @@ pub struct Processor {
     counter: usize,
 }
 
+/// [`Clusters`]
 pub type Input = Clusters;
 
+/// [`ColorStat`]
 pub type Output = ColorStat;
 
 #[derive(Default)]

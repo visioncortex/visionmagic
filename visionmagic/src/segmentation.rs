@@ -1,3 +1,4 @@
+//! Processor to group clusters together by the disjoint set algorithm
 use std::collections::HashMap;
 use visioncortex::{Color, ColorImage, ColorSum};
 use visioncortex::color_clusters::{Cluster, Clusters, ClusterIndex};
@@ -12,12 +13,15 @@ pub struct Processor {
     counter: usize,
 }
 
+/// [`Clusters`]
 pub type Input = Clusters;
 
+/// [`ColorImage`]
 pub type Output = ColorImage;
 
 #[derive(Default)]
 pub struct Params {
+    /// Allowed color difference between shapes in same set
     pub deviation: f64,
 }
 

@@ -1,3 +1,4 @@
+//! Processor to perform clustering & hierarchical clustering on an image
 use visioncortex::ColorImage;
 use visioncortex::color_clusters::{Clusters, IncrementalBuilder, Runner, RunnerConfig, HIERARCHICAL_MAX};
 use crate::pipeline::Processor as ProcessorTrait;
@@ -8,12 +9,16 @@ pub struct Processor {
     builder: Option<IncrementalBuilder>,
 }
 
+/// [`ColorImage`]
 pub type Input = ColorImage;
 
+/// [`Clusters`]
 pub type Output = Clusters;
 
 pub struct Params {
+    /// Valid range is 1~256. More levels means finer gradient
     pub color_levels: u32,
+    /// Perform hierarchical clustering up to this size (area)
     pub hierarchical: u32,
 }
 

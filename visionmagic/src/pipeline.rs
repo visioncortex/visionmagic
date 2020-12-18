@@ -1,7 +1,11 @@
+/// Processor is an element of an image processing pipeline
 pub trait Processor {
 
+    /// Type definition of input
     type Input;
+    /// Type definition of output
     type Output;
+    /// Type definition of parameters
     type Params;
 
     /// Create a new Processor instance

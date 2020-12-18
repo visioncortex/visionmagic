@@ -1,3 +1,4 @@
+//! Processor to remove small clusters by merging into larger ones
 use std::collections::HashSet;
 use visioncortex::{Color, ColorImage};
 use visioncortex::color_clusters::Clusters;
@@ -14,12 +15,16 @@ pub struct Processor {
     counter: usize,
 }
 
+/// [`Clusters`]
 pub type Input = Clusters;
 
+/// [`ColorImage`]
 pub type Output = ColorImage;
 
 pub struct Params {
+    /// Allowed color difference between shapes in same aggregate
     pub deviation: f64,
+    /// Minimum patch size in area
     pub min_size: u32,
 }
 
@@ -29,9 +34,9 @@ struct Aggregate {
 }
 
 #[derive(Copy, Clone, Default, Eq, Ord, Hash, PartialEq, PartialOrd)]
-pub struct AggregateIndex(pub usize);
+struct AggregateIndex(pub usize);
 
-pub const ZERO: AggregateIndex = AggregateIndex(0);
+const ZERO: AggregateIndex = AggregateIndex(0);
 
 impl Default for Params {
     fn default() -> Self {
@@ -149,7 +154,7 @@ impl Processor {
         &mut self.aggregates[index.0 as usize]
     }
 
-    pub fn neighbours_of(&self, myselfi: AggregateIndex) -> Vec<AggregateIndex> {
+    fn neighbours_of(&self, myselfi: AggregateIndex) -> Vec<AggregateIndex> {
         let myself = self.get_agg(myselfi);
         let mut neighbours = HashSet::new();
 

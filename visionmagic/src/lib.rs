@@ -1,9 +1,10 @@
+//! Collection of vision & graphics algorithms
 pub use visioncortex;
 
 pub mod aggregation;
 pub mod cluster_stat;
 pub mod clustering;
-pub mod pipeline;
+mod pipeline;
 pub mod segmentation;
 pub mod simplification;
 
