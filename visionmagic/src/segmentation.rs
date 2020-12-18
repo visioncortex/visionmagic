@@ -110,13 +110,13 @@ impl ProcessorTrait for Processor {
 }
 
 impl Processor {
-    pub fn color_distance(myself: &Cluster, other: &Cluster) -> i32 {
+    fn color_distance(myself: &Cluster, other: &Cluster) -> i32 {
         let mycolor = myself.residue_color();
         let otcolor = other.residue_color();
         (10000.0 * Self::color_diff_hsv(mycolor, otcolor)) as i32
     }
 
-    pub fn color_diff_hsv(a: Color, b: Color) -> f64 {
+    fn color_diff_hsv(a: Color, b: Color) -> f64 {
         let a = a.to_hsv();
         let b = b.to_hsv();
         return 2.0 * wrap(a.h, b.h) + (a.s - b.s).abs() + (a.v - b.v).abs();

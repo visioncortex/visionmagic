@@ -98,13 +98,15 @@ impl ProcessorTrait for Processor {
                     (*otheri, Self::color_distance(myself, other))
                 }).collect();
                 votes.sort_by_key(|v| v.1);
-                let diff = votes[0].1 as f64 / 10000.0;
-                if  (myself.area() < self.params.min_size as usize / 16) ||
-                    (diff < self.params.deviation && myself.area() < self.params.min_size as usize) ||
-                    (diff < self.params.deviation * 2.0 && myself.area() < self.params.min_size as usize / 4) ||
-                    (diff < self.params.deviation / 2.0 && myself.area() < self.params.min_size as usize * 4) || 
-                    (diff < self.params.deviation / 4.0) {
-                    self.merge_into(myselfi, votes[0].0);
+                if !votes.is_empty() {
+                    let diff = votes[0].1 as f64 / 10000.0;
+                    if  (myself.area() < self.params.min_size as usize / 16) ||
+                        (diff < self.params.deviation && myself.area() < self.params.min_size as usize) ||
+                        (diff < self.params.deviation * 2.0 && myself.area() < self.params.min_size as usize / 4) ||
+                        (diff < self.params.deviation / 2.0 && myself.area() < self.params.min_size as usize * 4) || 
+                        (diff < self.params.deviation / 4.0) {
+                        self.merge_into(myselfi, votes[0].0);
+                    }
                 }
             }
             self.counter += 1;
@@ -143,7 +145,24 @@ impl Processor {
     }
 
     fn color_distance(myself: &Aggregate, other: &Aggregate) -> i32 {
-        (10000.0 * super::segmentation::Processor::color_diff_hsv(myself.color, other.color)) as i32
+        let mycolor = myself.color;
+        let otcolor = other.color;
+        (10000.0 * Self::color_diff_hsv(mycolor, otcolor)) as i32
+    }
+
+    fn color_diff_hsv(a: Color, b: Color) -> f64 {
+        let a = a.to_hsv();
+        let b = b.to_hsv();
+        return 1.5 * wrap(a.h, b.h) + 1.25 * (a.v - b.v).abs() + 0.75 * (a.s - b.s).abs();
+
+        fn wrap(x: f64, y: f64) -> f64 {
+            let d = (x - y).abs();
+            if d < 0.5 {
+                d
+            } else {
+                1.0 - d
+            }
+        }
     }
 
     fn get_agg(&self, index: AggregateIndex) -> &Aggregate {
