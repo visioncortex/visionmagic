@@ -28,7 +28,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(f
 /*!*****************************************!*\
   !*** ../pkg/visionmagic_webapp_bg.wasm ***!
   \*****************************************/
-/*! exports provided: memory, main, __wbg_segmentation_free, segmentation_new_with_string, segmentation_reconfig, segmentation_init, segmentation_tick, segmentation_progress, __wbg_simplification_free, simplification_new_with_string, simplification_reconfig, simplification_init, simplification_tick, simplification_progress, __wbindgen_malloc, __wbindgen_realloc, __wbindgen_free, __wbindgen_exn_store, __wbindgen_start */
+/*! exports provided: memory, __wbg_segmentation_free, segmentation_new_with_string, segmentation_reconfig, segmentation_init, segmentation_tick, segmentation_progress, __wbg_simplification_free, simplification_new_with_string, simplification_reconfig, simplification_init, simplification_tick, simplification_progress, main, __wbindgen_malloc, __wbindgen_realloc, __wbindgen_free, __wbindgen_exn_store, __wbindgen_start */
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("\"use strict\";\n// Instantiate WebAssembly module\nvar wasmExports = __webpack_require__.w[module.i];\n__webpack_require__.r(exports);\n// export exports from WebAssembly module\nfor(var name in wasmExports) if(name != \"__webpack_init__\") exports[name] = wasmExports[name];\n// exec imports from WebAssembly module (for esm order)\n/* harmony import */ var m0 = __webpack_require__(/*! ./visionmagic_webapp_bg.js */ \"../pkg/visionmagic_webapp_bg.js\");\n\n\n// exec wasm module\nwasmExports[\"__webpack_init__\"]()\n\n//# sourceURL=webpack:///../pkg/visionmagic_webapp_bg.wasm?");
