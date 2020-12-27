@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vision Magic</title>
+        <link rel="apple-touch-icon" sizes="192x192" href="./assets/apple-icon.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="./assets/apple-icon.png">
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="./uikit/css/uikit.min.css" />
+        <link rel="stylesheet" href="./assets/style.css" />
+
+        <!-- UIkit JS -->
+        <script src="./uikit/js/uikit.min.js"></script>
+        <script src="./uikit/js/uikit-icons.min.js"></script>
+    </head>
+
+    <body id="simplification" class="uk-dark">
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+        <div class="container uk-padding" uk-grid>
+            <div id="options" class="uk-width-1-4 uk-height-1-1 uk-grid-small uk-flex uk-flex-center" uk-grid>
+
+                <div class="uk-text-large">
+                    <a href="//www.visioncortex.org/visionmagic/">Vision Magic</a> Simplification
+                </div>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div>
+                        Shape Details
+                    </div>
+                </div>
+                <div id="shape_details_value" class="uk-width-1-6">
+                    32768
+                </div>
+                <div class="uk-width-5-6">
+                    <input id="shape_details" class="uk-range" type="range" min="1" max="65535" step="1" value="32768">
+                </div>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div>
+                        Fidelity
+                    </div>
+                </div>
+                <div id="fidelity_value" class="uk-width-1-6">
+                    32768
+                </div>
+                <div class="uk-width-5-6">
+                    <input id="fidelity" class="uk-range" type="range" min="1" max="65535" step="1" value="32768">
+                </div>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div>
+                        Color Levels
+                    </div>
+                </div>
+                <div id="color_levels_value" class="uk-width-1-6">
+                    16
+                </div>
+                <div class="uk-width-5-6">
+                    <input id="color_levels" class="uk-range" type="range" min="0" max="8" step="1" value="4">
+                </div>
+
+                <p></p>
+
+                <div class="uk-width-1-1 uk-flex uk-flex-right">
+                    <div id="progressregion" class="uk-width-1-1" style="display: none;">
+                        <progress id="progressbar" class="uk-progress" value="0" max="100" style="width: 98%;"></progress>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-3-4">
+                <div id="drop" class="uk-padding uk-flex uk-flex-center">
+                    <div id="canvas-container" class="uk-width-1-1">
+                        <div id="droptext" class="uk-flex uk-flex-middle uk-flex-center">
+                            <p>Drag an image here or <a href="#" id="imageSelect">Select file</a></p>
+                        </div>
+                        <canvas id="frame"></canvas>
+                        <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
+                    </div>
+                </div>
+                <a id="export">Download as PNG</a>
+            </div>
+        </div>
+
+        <script src="./bootstrap.js"></script>
+    </body>
+</html>

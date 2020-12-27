@@ -18,25 +18,6 @@ watermark.dark.src = 'assets/visioncortex-logo-watermark-dark.png';
 canvas.style.display = 'none';
 svg.style.display = 'none';
 
-document.addEventListener('paste', function (e) {
-    if (e.clipboardData) {
-        let items = e.clipboardData.items;
-        if (!items) return;
-
-        //access data directly
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].type.indexOf("image") !== -1) {
-                //image
-                let blob = items[i].getAsFile();
-                let URLObj = window.URL || window.webkitURL;
-                let source = URLObj.createObjectURL(blob);
-                setSourceAndRestart(source);
-            }
-        }
-        e.preventDefault();
-    }
-});
-
 if (document.getElementById('export')) {
     document.getElementById('export').addEventListener('click', function (e) {
         let filename = 'visionmagic-' + new Date().toISOString().slice(0, 19).replace(/:/g, '').replace('T', ' ') + '.png';
@@ -66,18 +47,6 @@ if (document.getElementById('export')) {
     }, false);
 }
 
-if (document.getElementById('export-svg')) {
-    document.getElementById('export-svg').addEventListener('click', function (e) {
-        const blob = new Blob([new XMLSerializer().serializeToString(svg)], {type: 'octet/stream'}),
-        url = window.URL.createObjectURL(blob);
-
-        this.href = url;
-        this.target = '_blank';
-
-        this.download = 'visionmagic-' + new Date().toISOString().slice(0, 19).replace(/:/g, '').replace('T', ' ') + '.svg';
-    });
-}
-
 let global =
     document.body.id == 'simplification' ? simplification.global() :
     document.body.id == 'segmentation' ? segmentation.global() :
@@ -91,35 +60,6 @@ let presetConfigs =
 document.body.id == 'simplification' ? simplification.setup(global, reconfig, restart) :
 document.body.id == 'segmentation' ? segmentation.setup(global, reconfig, restart) :
 null;
-
-for (let i = 0; i < presetConfigs.length; i++) {
-    document.getElementById('galleryslider').innerHTML += 
-    `<li>
-    <div class="galleryitem uk-panel uk-flex uk-flex-center">
-        <a href="#">
-            <img src="${presetConfigs[i].src}" title="${presetConfigs[i].source}">
-        </a>
-    </div>
-    </li>`;
-    document.getElementById('credits-modal-content').innerHTML += 
-    `<p>${presetConfigs[i].credit}</p>`;
-}
-
-// Gallery
-let chooseGalleryButtons = document.querySelectorAll('.galleryitem a');
-chooseGalleryButtons.forEach(item => {
-    item.addEventListener('click', function (e) {
-        // Load preset template config
-        let i = Array.prototype.indexOf.call(chooseGalleryButtons, item);
-        // Load preset parameters
-        Object.assign(global, presetConfigs[i]);
-        document.body.id == 'simplification' ? simplification.displayParams(global) :
-        document.body.id == 'segmentation' ? segmentation.displayParams(global) :
-        null;
-        // Set source as specified
-        setSourceAndRestart(this.firstElementChild.src);
-    });
-});
 
 // Upload button
 let imageSelect = document.getElementById('imageSelect'),
@@ -272,8 +212,6 @@ class Runner {
             }
             if (!done) {
                 This.timer = setTimeout(tick, 1);
-            } else {
-                renderWatermark();
             }
         }, 1);
     }
@@ -286,24 +224,5 @@ class Runner {
     reconfig (params) {
         clearTimeout(this.timer);
         this.runner.reconfig(JSON.stringify(params));
-    }
-}
-
-function renderWatermark() {
-    const w = 125 * 1.25, h = 26 * 1.25;
-    const imagedata = ctx.getImageData(canvas.width - w, canvas.height - h, w, h);
-    let count = 0, sum = 0;
-    for (let i=0; i<w*h; i+=3) {
-        if (i != 0 && i % 4 == 0) {
-            continue;
-        }
-        count += 1;
-        sum += imagedata.data[i];
-    }
-    const ave = sum / count;
-    if ((64 <= ave && ave < 128) || (192 <= ave && ave < 256)) {
-        ctx.drawImage(watermark.dark, canvas.width - w, canvas.height - h, w, h);
-    } else {
-        ctx.drawImage(watermark.light, canvas.width - w, canvas.height - h, w, h);
     }
 }
