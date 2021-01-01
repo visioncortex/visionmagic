@@ -1,2 +1,2 @@
-*.css linguist-detectable=false
-*.js linguist-detectable=false
+docs/* linguist-vendored
+webapp/app/uikit/* linguist-vendored
