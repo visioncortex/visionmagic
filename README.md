@@ -8,7 +8,7 @@
   </p>
 
   <h3>
-    <a href="//www.visioncortex.org/visionmagic-docs">Paper</a>
+    <a href="//www.visioncortex.org/impression-docs">Article</a>
     <span> | </span>
     <a href="//www.visioncortex.org/visionmagic/">Demo</a>
     <span> | </span>
