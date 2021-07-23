@@ -30,16 +30,18 @@ Impression is a family of algorithms for image simplification, segmentation and 
 
 .
 
-<img src="docs/images/simplification-stages.png">
+<a href="//www.visioncortex.org/visionmagic/simplification.html"><img src="docs/images/simplification-stages.png"></a>
 
 Different levels of simplification
 
 ## Segmentation
 
-<img src="docs/images/Segmentation Screenshot.png">
+<a href="//www.visioncortex.org/visionmagic/segmentation.html"><img src="docs/images/Segmentation Screenshot.png"></a>
 
-## Vectorization
+## Image Repairing
 
-<img src="docs/images/Vectorization Screenshot.png">
+### FMM
 
-Vectorization is available as a standalone utility [VTracer](//github.com/visioncortex/vtracer).
+<a href="//www.visioncortex.org/visionmagic/repair.html"><img src="docs/images/FMM Screenshot.png"></a>
+
+We experimented with "An image inpainting technique based on the fast marching method"

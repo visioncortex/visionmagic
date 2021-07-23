@@ -5,9 +5,125 @@
         <title>Vision Magic</title>
         <link rel="apple-touch-icon" sizes="192x192" href="./assets/apple-icon.png">
         <link rel="icon" type="image/png" sizes="192x192"  href="./assets/apple-icon.png">
-        <meta http-equiv="refresh" content="0; url=simplification.html" />
+        <style>
+        body {
+          background: linear-gradient(135deg, #00275d 0%, #2e2e2e 100%);
+          color: #f7f7f7;
+          font-family: "Lato", sans-serif;
+          font-weight: 300;
+        }
+
+        .container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          flex-wrap: wrap;
+          width: 60vw;
+          max-width: 1200px;
+          margin: 0 auto;
+          min-height: 100vh;
+        }
+
+        .button {
+          flex: 1 1 auto;
+          margin: 10px;
+          padding: 20px;
+          border: 2px solid #f7f7f7;
+          text-align: center;
+          text-transform: uppercase;
+          position: relative;
+          overflow: hidden;
+          transition: 0.3s;
+        }
+        .button:after {
+          position: absolute;
+          transition: 0.3s;
+          content: "";
+          width: 0;
+          left: 50%;
+          bottom: 0;
+          height: 3px;
+          background: #f7f7f7;
+        }
+        .button:nth-of-type(2):after {
+          left: 0;
+        }
+        .button:nth-of-type(3):after {
+          right: 0;
+          left: auto;
+        }
+        .button:nth-of-type(4):after {
+          left: 0;
+          bottom: auto;
+          top: -3px;
+          width: 100%;
+        }
+        .button:nth-of-type(5):after {
+          height: 120%;
+          left: -10%;
+          transform: skewX(15deg);
+          z-index: -1;
+        }
+        .button:hover {
+          cursor: pointer;
+        }
+        .button:hover:after {
+          width: 100%;
+          left: 0;
+        }
+        .button:hover:nth-of-type(4):after {
+          top: calc(100% - 3px);
+        }
+        .button:hover:nth-of-type(5) {
+          color: #5bcaff;
+        }
+        .button:hover:nth-of-type(5):after {
+          left: -10%;
+          width: 120%;
+        }
+        .button:hover:nth-of-type(6) {
+          border-radius: 30px;
+        }
+        .button:hover:nth-of-type(6):after {
+          width: 0%;
+        }
+        .button:hover:nth-of-type(7) {
+          transform: scale(1.2);
+        }
+        .button:hover:nth-of-type(7):after {
+          width: 0%;
+        }
+        .button:hover:nth-of-type(8) {
+          box-shadow: inset 0px 0px 0px 3px #f7f7f7;
+        }
+        .button:hover:nth-of-type(8):after {
+          width: 0%;
+        }
+        .button:hover:nth-of-type(9) {
+          box-shadow: 0px 0px 0px 3px #f7f7f7;
+        }
+        .button:hover:nth-of-type(9):after {
+          width: 0%;
+        }
+        a {
+            text-decoration: none;
+        }
+        a:link, a:visited {
+            color: unset;
+        }
+        a:hover {
+            color: unset;
+        }
+        </style>
     </head>
 
     <body>
+        <div class="container">
+            <div style="width: 1200px;"><img src="assets/visioncortex-logo-light.svg" height="80" /></div>
+            <a href="simplification.html" class="button">Simplification</a>
+            <a href="segmentation.html" class="button">Segmentation</a>
+            <a href="repair.html" class="button">Image Repairing</a>
+        </div>
     </body>
 </html>
