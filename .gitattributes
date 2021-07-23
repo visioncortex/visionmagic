@@ -1,2 +1,2 @@
-docs/* linguist-vendored
-webapp/app/uikit/* linguist-vendored
+docs/** linguist-generated
+webapp/app/uikit/** linguist-vendored
