@@ -60,6 +60,13 @@ html, body {
     position: relative;
     height: max-content;
 }
+#canvas, #mask{
+    background: #000;
+    opacity: 0.1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 #svg, #frame {
     position: absolute;
     width: 100%;
@@ -106,4 +113,9 @@ input[type=range]::-ms-thumb {
 }
 .uk-text-meta {
     font-size: 12px;
+}
+.cursor {
+    display: none;
+    border: 1px solid white;
+    position: absolute;
 }
