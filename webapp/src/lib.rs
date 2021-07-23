@@ -15,6 +15,7 @@ mod common;
 mod simplification;
 mod segmentation;
 mod utils;
+mod repair;
 
 #[wasm_bindgen(start)]
 pub fn main() {
