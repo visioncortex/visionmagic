@@ -20,19 +20,15 @@
 
 # Impression
 
-Impression is a family of algorithms for image simplification, segmentation and vectorization.
-
-## Simplification
+Impression is a family of algorithms for image simplification and segmentation.
 
 <a href="https://vimeo.com/491698600">
   <img src="docs/images/Simplification Screenshot.png">
 </a>
 
-.
+## Simplification
 
 <a href="//www.visioncortex.org/visionmagic/simplification.html"><img src="docs/images/simplification-stages.png"></a>
-
-Different levels of simplification
 
 ## Segmentation
 
