@@ -20,7 +20,7 @@
 
 # Impression
 
-Impression is a family of algorithms for image simplification and segmentation.
+Impression is a set of algorithms in the Statistical Region Merging family for image simplification and segmentation.
 
 <a href="https://vimeo.com/491698600">
   <img src="docs/images/Simplification Screenshot.png">
